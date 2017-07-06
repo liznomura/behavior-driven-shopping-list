@@ -96,7 +96,7 @@ describe('ShoppingList', function() {
   });
 
   /*** addItem ***/
-  describe.skip('addItem()', function() {
+  describe('addItem()', function() {
     before(function() {
       testList = new ShoppingList();
     });
@@ -157,7 +157,7 @@ describe('ShoppingList', function() {
     it('should concatenate the result of calling render() on each item in the objects item array, wrapping it in <ul> tags', function() {
       testList.addItem(avo);
       testList.addItem(eggu);
-      const expected = `<ul><li class='completed_${avo.is_done}'><span>${avo.name}</span><span>${avo.description}</span></li></ul>`
+      const expected = `<ul><li class='completed_${avo.is_done}'><span>${avo.name}</span><span>${avo.description}</span></li><li class='completed_${eggu.is_done}'><span>${eggu.name}</span><span>${eggu.description}</span></li></ul>`;
       expect(testList.render()).to.equal(expected);
     });
   });
