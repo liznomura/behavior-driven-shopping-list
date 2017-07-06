@@ -16,7 +16,18 @@ class ShoppingListItem {
   }
 
   render() {
-    return `<li class="completed_${this.is_done}"><span>${this.name}</span><span>${this.description}</span></li>`;
+    const singleLi = document.createElement('li');
+    const firstSpan = document.createElement('span');
+    const secondSpan = document.createElement('span');
+
+    singleLi.className = `completed_${this.is_done}`;
+    firstSpan.innerText = this.name;
+    secondSpan.innerText = this.description;
+
+    singleLi.appendChild(firstSpan);
+    singleLi.appendChild(secondSpan);
+
+    return singleLi;
   }
 
 }
