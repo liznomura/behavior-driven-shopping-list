@@ -1,8 +1,9 @@
 /*jshint esversion:6*/
 let expect = chai.expect;
+
 describe('ShoppingListItem', function() {
 
-  let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
+  let testItem = new ShoppingListItem();
 
   it('should be a function', function() {
     expect(ShoppingListItem).to.be.a('function');
@@ -21,13 +22,17 @@ describe('ShoppingListItem', function() {
   });
 
   it('constructor method sets a name and description property on an instance', function() {
-    expect(testItem.name).to.equal('Avocado');
-    expect(testItem.description).to.equal('vegetable mayonnaise');
+    const name = 'Avocado';
+    const description = 'vegetable mayonnaise';
+
+    testItem = new ShoppingListItem(name, description);
+    expect(testItem.name).to.equal(name);
+    expect(testItem.description).to.equal(description);
   });
 
   describe('check()', function() {
     before(function() {
-      let testItem = new ShoppingListItem();
+      testItem = new ShoppingListItem();
     });
 
     it('ShoppingListItem has a method named check()', function() {
@@ -41,9 +46,7 @@ describe('ShoppingListItem', function() {
   });
 
   describe('uncheck()', function() {
-    before(function() {
-      let testItem = new ShoppingListItem();
-    });
+    testItem = new ShoppingListItem();
 
     it('ShoppingListItem should have a method uncheck()', function() {
       expect(testItem).to.respondTo('uncheck');
@@ -65,22 +68,20 @@ describe('ShoppingListItem', function() {
       expect(testItem.render()).to.equal(expected);
     });
   });
+});
 
-  describe('ShoppingList', function() {
-    before(function() {
-      let testList = new ShoppingList();
-    });
+describe('ShoppingList', function() {
+  let testList = new ShoppingList();
 
-    it('ShoppingList should be a function', function() {
-      expect(ShoppingList).to.be.a('function');
-    });
+  it('ShoppingList should be a function', function() {
+    expect(ShoppingList).to.be.a('function');
+  });
 
-    it('ShoppingList should have the property items', function() {
-      expect(testList).to.have.a.property('items');
-    });
+  it('ShoppingList should have the property items', function() {
+    expect(testList).to.have.a.property('items');
+  });
 
-    it('should have a constructor method that initializes items as an empty array', function() {
-      expect(testList.items).to.deep.equal([]);
-    });
+  it('should have a constructor method that initializes items as an empty array', function() {
+    expect(testList.items).to.deep.equal([]);
   });
 });
