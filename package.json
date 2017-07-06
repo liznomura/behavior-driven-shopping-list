@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "Fork and clone this project.   Goal: Create a working, single page app.",
   "main": "index.js",
-  "dependencies": {
-    "chai": "^4.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "chai": "^4.0.2",
     "mocha": "^3.4.2"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test --watch"
   },
   "repository": {
     "type": "git",
