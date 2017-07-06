@@ -120,7 +120,7 @@ describe('ShoppingList', function() {
 
     it('should be a method on ShoppingList', function(){
       expect(testList.removeItem).to.be.a('function');
-      expect(ShoppingList).to.respondTo(removeItem);
+      expect(ShoppingList).to.respondTo('removeItem');
     });
 
     it('should remove the item from items list', function() {
@@ -135,5 +135,11 @@ describe('ShoppingList', function() {
       testList.removeItem();
       expect(testList.item).to.not.include(eggu);
     });
+
+    it('should throw an error if item passed in is not a ShoppingListItem object', function() {
+      expect(() => testList.removeItem(1)).to.throw(Error);
+      expect(() => testList.removeItem('cat')).to.throw(Error);
+      expect(() => testList.removeItem("")).to.throw(Error);
+    })
   });
 });
