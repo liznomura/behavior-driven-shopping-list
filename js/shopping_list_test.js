@@ -96,7 +96,7 @@ describe('ShoppingList', function() {
   });
 
   /*** addItem ***/
-  describe('addItem()', function() {
+  describe.skip('addItem()', function() {
     before(function() {
       testList = new ShoppingList();
     });
@@ -117,7 +117,7 @@ describe('ShoppingList', function() {
   /*** removeItem ***/
   describe('removeItem()', function() {
 
-    before(function() {
+    beforeEach(function() {
       testList = new ShoppingList();
     });
 
@@ -129,7 +129,7 @@ describe('ShoppingList', function() {
     it('should remove the item from items list', function() {
       testList.addItem(avo);
       testList.removeItem(avo);
-      console.log(testList.items);
+
       expect(testList.items).to.not.include(avo);
     });
 
@@ -137,6 +137,7 @@ describe('ShoppingList', function() {
       testList.addItem(avo);
       testList.addItem(eggu);
       testList.removeItem();
+
       expect(testList.items).to.not.include(eggu);
     });
 
@@ -149,7 +150,6 @@ describe('ShoppingList', function() {
 
   /*** render ***/
   describe('render()', function() {
-
     before(function() {
       testList = new ShoppingList();
     });

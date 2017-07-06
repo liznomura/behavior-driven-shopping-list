@@ -5,6 +5,7 @@ class ShoppingList {
   }
 
   addItem(item) {
+    console.log('ex')
     if(!(item instanceof ShoppingListItem)) {
       throw new Error('Must be a ShoppingListItem!');
     }
@@ -22,7 +23,7 @@ class ShoppingList {
     } else {
        const index = this.items.indexOf(item);
 
-       if(index > 0) {
+       if(index >= 0) {
         this.items.splice(index, 1);
       }
     }
