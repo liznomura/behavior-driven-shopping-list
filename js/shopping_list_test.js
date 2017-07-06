@@ -84,4 +84,17 @@ describe('ShoppingList', function() {
   it('should have a constructor method that initializes items as an empty array', function() {
     expect(testList.items).to.deep.equal([]);
   });
+
+  describe('addItem()', function() {
+    before(function() {
+      testList = new ShoppingList();
+    });
+
+    it('accepts a single ShoppingListItem argument, adds it to the items array', function() {
+      const newItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
+      testList.addItem(newItem);
+
+      expect(testList.items).to.deep.equal([{name: 'Avocado', description: 'vegetable mayonnaise', is_done: false}]);
+    });
+  });
 });
