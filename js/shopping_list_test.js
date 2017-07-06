@@ -4,19 +4,19 @@ describe('ShoppingListItem', function() {
 
 let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
 
-  it('should be a class', function() {
+  it('should be a function', function() {
     expect(ShoppingListItem).to.be.a('function');
   });
 
-  it('should have the property, name', function() {
+  it('should have the property name', function() {
     expect(testItem).to.have.a.property('name');
   });
 
-  it('should have the property, description', function() {
+  it('should have the property description', function() {
     expect(testItem).to.have.a.property('description');
   });
 
-  it('should have the property, is_done', function() {
+  it('should have the property is_done', function() {
     expect(testItem).to.have.a.property('is_done');
   });
 
@@ -63,6 +63,23 @@ let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
     it('should return an html formatted string with the name and description as content', function() {
       const expected = `<li><span>${testItem.name}</span><span>${testItem.description}</span></li>`;
       expect(testItem.render()).to.equal(expected);
+    });
+  });
+
+  describe('ShoppingList', function() {
+    before(function() {
+    let testList = new ShoppingList();
+  });
+    it('ShoppingList should be a function', function() {
+      expect('ShoppingList').to.be.a('function)');
+    });
+
+    it('ShoppingList should have the property items', function() {
+      expect(testList).to.have.a.property('items');
+    });
+
+    it('should have a constructor method that initializes items as an empty array', function() {
+      expect(testList.items).to.deep.equal([]);
     });
   });
 });
