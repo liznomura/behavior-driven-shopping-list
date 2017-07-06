@@ -56,6 +56,7 @@ describe('ShoppingListItem', function() {
     });
 
     it('should set the instances is_done method to false', function() {
+      testItem.check();
       testItem.uncheck();
       expect(testItem.is_done).to.be.false;
     });
@@ -69,7 +70,7 @@ describe('ShoppingListItem', function() {
     });
 
     it('should return an html formatted string with the name and description as content', function() {
-      const expected = `<li class='completed_${testItem.is_done}'><span>${testItem.name}</span><span>${testItem.description}</span></li>`;
+      const expected = `<li class="completed_${testItem.is_done}"><span>${testItem.name}</span><span>${testItem.description}</span></li>`;
       expect(testItem.render()).to.equal(expected);
     });
   });
@@ -157,7 +158,7 @@ describe('ShoppingList', function() {
     it('should concatenate the result of calling render() on each item in the objects item array, wrapping it in <ul> tags', function() {
       testList.addItem(avo);
       testList.addItem(eggu);
-      const expected = `<ul><li class='completed_${avo.is_done}'><span>${avo.name}</span><span>${avo.description}</span></li><li class='completed_${eggu.is_done}'><span>${eggu.name}</span><span>${eggu.description}</span></li></ul>`;
+      const expected = `<ul><li class="completed_${avo.is_done}"><span>${avo.name}</span><span>${avo.description}</span></li><li class="completed_${eggu.is_done}"><span>${eggu.name}</span><span>${eggu.description}</span></li></ul>`;
       expect(testList.render()).to.equal(expected);
     });
   });
