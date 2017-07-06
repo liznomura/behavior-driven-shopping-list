@@ -1,6 +1,7 @@
 /*jshint esversion:6*/
 let expect = chai.expect;
 
+/* ShoppingListItem */
 describe('ShoppingListItem', function() {
 
   let testItem = new ShoppingListItem();
@@ -30,6 +31,7 @@ describe('ShoppingListItem', function() {
     expect(testItem.description).to.equal(description);
   });
 
+  /*** check() ***/
   describe('check()', function() {
     before(function() {
       testItem = new ShoppingListItem();
@@ -45,6 +47,7 @@ describe('ShoppingListItem', function() {
     });
   });
 
+  /*** uncheck() ***/
   describe('uncheck()', function() {
     testItem = new ShoppingListItem();
 
@@ -58,6 +61,8 @@ describe('ShoppingListItem', function() {
     });
   });
 
+
+  /*** render() ***/
   describe('render()', function() {
     it('ShoppingListItem should have a method render()', function() {
       expect(testItem).to.respondTo('render');
@@ -70,8 +75,11 @@ describe('ShoppingListItem', function() {
   });
 });
 
+
+/*** ShoppingList ***/
 describe('ShoppingList', function() {
   let testList = new ShoppingList();
+
 
   it('ShoppingList should be a function', function() {
     expect(ShoppingList).to.be.a('function');
@@ -85,6 +93,7 @@ describe('ShoppingList', function() {
     expect(testList.items).to.deep.equal([]);
   });
 
+  /*** addItem ***/
   describe('addItem()', function() {
     before(function() {
       testList = new ShoppingList();
@@ -101,6 +110,30 @@ describe('ShoppingList', function() {
       expect(() => testList.addItem(1)).to.throw();
       expect(() => testList.addItem('')).to.throw();
       expect(() => testList.addItem({name: 'Avocado', description: 'vegetable mayonnaise', is_done: false}))
+    });
+  });
+
+  /*** removeItem ***/
+  describe('removeItem()', function() {
+    let avo = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
+    let eggu = new ShoppingListItem('Eggs', 'very fresh');
+
+    it('should be a method on ShoppingList', function(){
+      expect(testList.removeItem).to.be.a('function');
+      expect(ShoppingList).to.respondTo(removeItem);
+    });
+
+    it('should remove the item from items list', function() {
+      testList.addItem(avo);
+      testList.removeItem(avo);
+      expect(testList.items).to.not.include(avo);
+    });
+
+    it('should remove last item on items list if no parameter passed in', function() {
+      testList.addItem(avo);
+      testList.addItem(eggu);
+      testList.removeItem();
+      expect(testList.item).to.not.include(eggu);
     });
   });
 });
