@@ -29,12 +29,29 @@ let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
     before(function() {
       let testItem = new ShoppingListItem();
     });
+
     it('ShoppingListItem has a method named check()', function() {
       expect(testItem).to.respondTo('check');
     });
+
     it('should set the instances is_done property to true', function() {
       testItem.check();
       expect(testItem.is_done).to.be.true;
+    });
+  });
+
+  describe('uncheck()', function() {
+    before(function() {
+      let testItem = new ShoppingListItem();
+    });
+
+    it('ShoppingListItem should have a method uncheck()', function() {
+      expect(testItem).to.respondTo('uncheck');
+    });
+
+    it('should set the instances is_done method to false', function() {
+      testItem.uncheck();
+      expect(testItem.is_done).to.be.false;
     });
   });
 });
