@@ -28,4 +28,14 @@ class ShoppingList {
       }
     }
   }
+
+  render() {
+    let html = `<ul>`;
+    for(let i = 0; i < this.items.length; i++) {
+      html += this.items[i].render();
+    }
+    html += `</ul>`;
+    return html;
+  }
+
 }
