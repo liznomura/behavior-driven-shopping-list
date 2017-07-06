@@ -24,4 +24,17 @@ let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
     expect(testItem.name).to.equal('Avocado');
     expect(testItem.description).to.equal('vegetable mayonnaise');
   });
+
+  describe('check()', function() {
+    before(function() {
+      let testItem = new ShoppingListItem();
+    });
+    it('ShoppingListItem has a method named check()', function() {
+      expect(testItem).to.respondTo('check');
+    });
+    it('should set the instances is_done property to true', function() {
+      testItem.check();
+      expect(testItem.is_done).to.be.true;
+    });
+  });
 });
