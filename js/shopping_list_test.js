@@ -70,19 +70,19 @@ describe('ShoppingListItem', function() {
 
   /*** render() ***/
   describe('render()', function() {
+    let renderedItem;
+
     before(function() {
       testItem = new ShoppingListItem(name, description);
+      renderedItem = testItem.render();
     });
-
-    // create nodes
-    const renderedItem = testItem.render();
 
     it('ShoppingListItem should have a method render()', function() {
       expect(testItem).to.respondTo('render');
     });
 
     it('should be a single <li>', function() {
-      expect(renderedItem.nodeName).to.equal("LI");
+      expect(renderedItem.nodeName).to.equal('LI');
     });
 
     it('<li> should have two <span>', function() {
@@ -171,15 +171,27 @@ describe('ShoppingList', function() {
 
   /*** render ***/
   describe('render()', function() {
+    let renderedList;
+
     before(function() {
       testList = new ShoppingList();
-    });
-
-    it('should concatenate the result of calling render() on each item in the objects item array, wrapping it in <ul> tags', function() {
       testList.addItem(avo);
       testList.addItem(eggu);
-      const expected = `<ul><li class="completed_${avo.is_done}"><span>${avo.name}</span><span>${avo.description}</span></li><li class="completed_${eggu.is_done}"><span>${eggu.name}</span><span>${eggu.description}</span></li></ul>`;
-      expect(testList.render()).to.equal(expected);
+
+      renderedList = testList.render();
+    });
+
+    it('should return a <ul> node', function() {
+      expect(renderedList.nodeName).to.equal('UL');
+    });
+
+    it('should return a <ul> node containing each item in the instances item array', function() {
+
+      expect(renderedList.childNodes).to.have.a.lengthOf(2);
+
+
+      // const expected = `<ul><li class="completed_${avo.is_done}"><span>${avo.name}</span><span>${avo.description}</span></li><li class="completed_${eggu.is_done}"><span>${eggu.name}</span><span>${eggu.description}</span></li></ul>`;
+      // expect(testList.render()).to.equal(expected);
     });
   });
 });
