@@ -1,3 +1,4 @@
+/*jshint esversion:6*/
 class ShoppingListItem {
   constructor(name, description) {
     this.name = name;
@@ -11,6 +12,10 @@ class ShoppingListItem {
 
   uncheck() {
     this.is_done = false;
+  }
+
+  render() {
+    return `<li><span>${this.name}</span><span>${this.description}</span></li>`;
   }
 
 }
