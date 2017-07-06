@@ -54,4 +54,15 @@ let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
       expect(testItem.is_done).to.be.false;
     });
   });
+
+  describe('render()', function() {
+    it('ShoppingListItem should have a method render()', function() {
+      expect(testItem).to.respondTo('render');
+    });
+
+    it('should return an html formatted string with the name and description as content', function() {
+      const expected = `<li><span>${testItem.name}</span><span>${testItem.description}</span></li>`;
+      expect(testItem.render()).to.equal(expected);
+    });
+  });
 });
