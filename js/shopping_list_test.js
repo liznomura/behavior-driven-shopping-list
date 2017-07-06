@@ -3,8 +3,10 @@ let expect = chai.expect;
 
 /* ShoppingListItem */
 describe('ShoppingListItem', function() {
+  const name = 'Avocado';
+  const description = 'vegetable mayonnaise';
 
-  let testItem = new ShoppingListItem();
+  let testItem = new ShoppingListItem(name, description);
 
   it('should be a function', function() {
     expect(ShoppingListItem).to.be.a('function');
@@ -23,18 +25,19 @@ describe('ShoppingListItem', function() {
   });
 
   it('constructor method sets a name and description property on an instance', function() {
-    const name = 'Avocado';
-    const description = 'vegetable mayonnaise';
-
     testItem = new ShoppingListItem(name, description);
     expect(testItem.name).to.equal(name);
     expect(testItem.description).to.equal(description);
   });
 
+  it('must at least provide a name to constructor', function() {
+    expect(() => new ShoppingListItem()).to.throw(Error);
+  });
+
   /*** check() ***/
   describe('check()', function() {
     before(function() {
-      testItem = new ShoppingListItem();
+      testItem = new ShoppingListItem(name, description);
     });
 
     it('ShoppingListItem has a method named check()', function() {
@@ -49,7 +52,7 @@ describe('ShoppingListItem', function() {
 
   /*** uncheck() ***/
   describe('uncheck()', function() {
-    testItem = new ShoppingListItem();
+    testItem = new ShoppingListItem(name, description);
 
     it('ShoppingListItem should have a method uncheck()', function() {
       expect(testItem).to.respondTo('uncheck');

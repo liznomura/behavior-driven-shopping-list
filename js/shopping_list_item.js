@@ -1,6 +1,7 @@
 /*jshint esversion:6*/
 class ShoppingListItem {
   constructor(name, description) {
+    if(!name) throw new Error('must give a name')
     this.name = name;
     this.description = description;
     this.is_done = false;
