@@ -1,9 +1,8 @@
 /*jshint esversion:6*/
-let expect = require('chai').expect;
-
+let expect = chai.expect;
 describe('ShoppingListItem', function() {
 
-let testItem = new ShoppingListItem();
+let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
 
   it('should be a class', function() {
     expect(ShoppingListItem).to.be.a('function');
@@ -19,5 +18,10 @@ let testItem = new ShoppingListItem();
 
   it('should have the property, is_done', function() {
     expect(testItem).to.have.a.property('is_done');
+  });
+
+  it('constructor method sets a name and description property on an instance', function() {
+    expect(testItem.name).to.equal('Avocado');
+    expect(testItem.description).to.equal('vegetable mayonnaise');
   });
 });
