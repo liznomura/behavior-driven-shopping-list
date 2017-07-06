@@ -86,7 +86,7 @@ describe('ShoppingListItem', function() {
     });
 
     it('<li> should have two <span>', function() {
-      expect(renderedItem.childNodes).to.have.lengthOf(2);
+      expect(renderedItem.children).to.have.lengthOf(2);
     });
 
     it('innerText of <span>s should correspond to name and description', function() {
