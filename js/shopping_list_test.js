@@ -90,8 +90,8 @@ describe('ShoppingListItem', function() {
     });
 
     it('innerText of <span>s should correspond to name and description', function() {
-      expect(renderedItem.childNodes[0].innerText).to.equal('Avocado');
-      expect(renderedItem.childNodes[1].innerText).to.equal('vegetable mayonnaise');
+      expect(renderedItem.children[0].innerText).to.equal('Avocado');
+      expect(renderedItem.children[1].innerText).to.equal('vegetable mayonnaise');
     });
   });
 });
@@ -186,12 +186,7 @@ describe('ShoppingList', function() {
     });
 
     it('should return a <ul> node containing each item in the instances item array', function() {
-
-      expect(renderedList.childNodes).to.have.a.lengthOf(2);
-
-
-      // const expected = `<ul><li class="completed_${avo.is_done}"><span>${avo.name}</span><span>${avo.description}</span></li><li class="completed_${eggu.is_done}"><span>${eggu.name}</span><span>${eggu.description}</span></li></ul>`;
-      // expect(testList.render()).to.equal(expected);
+      expect(renderedList.children).to.have.a.lengthOf(2);
     });
   });
 });
