@@ -69,7 +69,7 @@ describe('ShoppingListItem', function() {
     });
 
     it('should return an html formatted string with the name and description as content', function() {
-      const expected = `<li><span>${testItem.name}</span><span>${testItem.description}</span></li>`;
+      const expected = `<li class='completed_${testItem.is_done}'><span>${testItem.name}</span><span>${testItem.description}</span></li>`;
       expect(testItem.render()).to.equal(expected);
     });
   });
@@ -79,6 +79,8 @@ describe('ShoppingListItem', function() {
 /*** ShoppingList ***/
 describe('ShoppingList', function() {
   let testList = new ShoppingList();
+  let avo = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
+  let eggu = new ShoppingListItem('Eggs', 'very fresh');
 
 
   it('ShoppingList should be a function', function() {
@@ -100,8 +102,7 @@ describe('ShoppingList', function() {
     });
 
     it('accepts a single ShoppingListItem argument, adds it to the items array', function() {
-      const newItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
-      testList.addItem(newItem);
+      testList.addItem(avo);
 
       expect(testList.items).to.deep.equal([{name: 'Avocado', description: 'vegetable mayonnaise', is_done: false}]);
     });
@@ -109,14 +110,16 @@ describe('ShoppingList', function() {
     it('immediately throw an Error if item is not an instanceof ShoppingListItem', function() {
       expect(() => testList.addItem(1)).to.throw();
       expect(() => testList.addItem('')).to.throw();
-      expect(() => testList.addItem({name: 'Avocado', description: 'vegetable mayonnaise', is_done: false}))
+      expect(() => testList.addItem({name: 'Avocado', description: 'vegetable mayonnaise', is_done: false}));
     });
   });
 
   /*** removeItem ***/
   describe('removeItem()', function() {
-    let avo = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
-    let eggu = new ShoppingListItem('Eggs', 'very fresh');
+
+    before(function() {
+      testList = new ShoppingList();
+    });
 
     it('should be a method on ShoppingList', function(){
       expect(testList.removeItem).to.be.a('function');
@@ -126,6 +129,7 @@ describe('ShoppingList', function() {
     it('should remove the item from items list', function() {
       testList.addItem(avo);
       testList.removeItem(avo);
+      console.log(testList.items);
       expect(testList.items).to.not.include(avo);
     });
 
@@ -140,6 +144,21 @@ describe('ShoppingList', function() {
       expect(() => testList.removeItem(1)).to.throw(Error);
       expect(() => testList.removeItem('cat')).to.throw(Error);
       expect(() => testList.removeItem("")).to.throw(Error);
-    })
+    });
+  });
+
+  /*** render ***/
+  describe('render()', function() {
+
+    before(function() {
+      testList = new ShoppingList();
+    });
+
+    it('should concatenate the result of calling render() on each item in the objects item array, wrapping it in <ul> tags', function() {
+      testList.addItem(avo);
+      testList.addItem(eggu);
+      const expected = `<ul><li class='completed_${avo.is_done}'><span>${avo.name}</span><span>${avo.description}</span></li></ul>`
+      expect(testList.render()).to.equal(expected);
+    });
   });
 });
