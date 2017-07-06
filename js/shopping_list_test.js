@@ -2,7 +2,7 @@
 let expect = chai.expect;
 describe('ShoppingListItem', function() {
 
-let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
+  let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
 
   it('should be a function', function() {
     expect(ShoppingListItem).to.be.a('function');
@@ -68,10 +68,11 @@ let testItem = new ShoppingListItem('Avocado', 'vegetable mayonnaise');
 
   describe('ShoppingList', function() {
     before(function() {
-    let testList = new ShoppingList();
-  });
+      let testList = new ShoppingList();
+    });
+
     it('ShoppingList should be a function', function() {
-      expect('ShoppingList').to.be.a('function)');
+      expect(ShoppingList).to.be.a('function');
     });
 
     it('ShoppingList should have the property items', function() {
