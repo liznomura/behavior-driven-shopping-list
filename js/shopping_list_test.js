@@ -52,7 +52,9 @@ describe('ShoppingListItem', function() {
 
   /*** uncheck() ***/
   describe('uncheck()', function() {
-    testItem = new ShoppingListItem(name, description);
+    before(function() {
+      testItem = new ShoppingListItem(name, description);
+    });
 
     it('ShoppingListItem should have a method uncheck()', function() {
       expect(testItem).to.respondTo('uncheck');
@@ -68,13 +70,28 @@ describe('ShoppingListItem', function() {
 
   /*** render() ***/
   describe('render()', function() {
+    before(function() {
+      testItem = new ShoppingListItem(name, description);
+    });
+
+    // create nodes
+    const renderedItem = testItem.render();
+
     it('ShoppingListItem should have a method render()', function() {
       expect(testItem).to.respondTo('render');
     });
 
-    it('should return an html formatted string with the name and description as content', function() {
-      const expected = `<li class="completed_${testItem.is_done}"><span>${testItem.name}</span><span>${testItem.description}</span></li>`;
-      expect(testItem.render()).to.equal(expected);
+    it('should be a single <li>', function() {
+      expect(renderedItem.nodeName).to.equal("LI");
+    });
+
+    it('<li> should have two <span>', function() {
+      expect(renderedItem.childNodes).to.have.lengthOf(2);
+    });
+
+    it('innerText of <span>s should correspond to name and description', function() {
+      expect(renderedItem.childNodes[0].innerText).to.equal('Avocado');
+      expect(renderedItem.childNodes[1].innerText).to.equal('vegetable mayonnaise');
     });
   });
 });
