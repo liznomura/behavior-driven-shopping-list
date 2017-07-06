@@ -111,7 +111,7 @@ describe('ShoppingList', function() {
     it('immediately throw an Error if item is not an instanceof ShoppingListItem', function() {
       expect(() => testList.addItem(1)).to.throw();
       expect(() => testList.addItem('')).to.throw();
-      expect(() => testList.addItem({name: 'Avocado', description: 'vegetable mayonnaise', is_done: false}));
+      expect(() => testList.addItem({name: 'Avocado', description: 'vegetable mayonnaise', is_done: false})).to.throw();
     });
   });
 

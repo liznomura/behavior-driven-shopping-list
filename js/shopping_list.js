@@ -5,7 +5,6 @@ class ShoppingList {
   }
 
   addItem(item) {
-    console.log('ex')
     if(!(item instanceof ShoppingListItem)) {
       throw new Error('Must be a ShoppingListItem!');
     }
