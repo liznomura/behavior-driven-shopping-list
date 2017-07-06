@@ -133,7 +133,7 @@ describe('ShoppingList', function() {
       testList.addItem(avo);
       testList.addItem(eggu);
       testList.removeItem();
-      expect(testList.item).to.not.include(eggu);
+      expect(testList.items).to.not.include(eggu);
     });
 
     it('should throw an error if item passed in is not a ShoppingListItem object', function() {
