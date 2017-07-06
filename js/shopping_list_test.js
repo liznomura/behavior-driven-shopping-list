@@ -3,19 +3,21 @@ let expect = require('chai').expect;
 
 describe('ShoppingListItem', function() {
 
+let testItem = new ShoppingListItem();
+
   it('should be a class', function() {
-    expect('ShoppingListItem').to.be.a('class');
+    expect(ShoppingListItem).to.be.a('function');
   });
 
   it('should have the property, name', function() {
-    expect('ShoppingListItem').to.have.a.property('name');
+    expect(testItem).to.have.a.property('name');
   });
 
   it('should have the property, description', function() {
-    expect('ShoppingListItem').to.have.a.property('description');
+    expect(testItem).to.have.a.property('description');
   });
 
   it('should have the property, is_done', function() {
-    expect('ShoppingListItem').to.have.a.property('is_done');
+    expect(testItem).to.have.a.property('is_done');
   });
 });
