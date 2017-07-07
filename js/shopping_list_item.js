@@ -19,6 +19,9 @@ class ShoppingListItem {
     const singleLi = document.createElement('li');
     const firstSpan = document.createElement('span');
     const secondSpan = document.createElement('span');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'checkbox';
 
     singleLi.className = `completed_${this.is_done}`;
     firstSpan.innerText = this.name;
@@ -26,8 +29,8 @@ class ShoppingListItem {
 
     singleLi.appendChild(firstSpan);
     singleLi.appendChild(secondSpan);
+    singleLi.appendChild(checkbox);
 
     return singleLi;
   }
-
 }
