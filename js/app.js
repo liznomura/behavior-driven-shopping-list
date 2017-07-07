@@ -28,6 +28,8 @@
   }
 
   window.changeCheckedStatus = function(idx, checkbox) {
-
+    if(checkbox.checked) {
+      myList.items[idx]
+    }
   };
 })();
