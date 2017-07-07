@@ -15,14 +15,22 @@ class ShoppingListItem {
     this.is_done = false;
   }
 
-  render() {
+  changeCheckedStatus() {
+    if(this.checked) {
+      this.check();
+    } else {
+      this.uncheck();
+    }
+  }
+
+  render(index) {
     const singleLi = document.createElement('li');
     const firstSpan = document.createElement('span');
     const secondSpan = document.createElement('span');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.className = 'checkbox';
-    checkbox.onchange = changeCheckedStatus;
+
 
     singleLi.className = `completed_${this.is_done}`;
     firstSpan.innerText = this.name;

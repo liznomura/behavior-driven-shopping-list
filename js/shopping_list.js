@@ -2,6 +2,7 @@
 class ShoppingList {
   constructor() {
     this.items = [];
+    this.changeCheckStatus.bind(this);
   }
 
   addItem(item) {
@@ -28,12 +29,26 @@ class ShoppingList {
     }
   }
 
+  changeCheckStatus(index) {
+    let item = this.items[index];
+
+    if(item.checked) {
+      item.uncheck();
+    } else {
+      item.check();
+    }
+  }
+
   render() {
     const list = document.createElement('ul');
 
-    const items = this.items.map(function(item) {
-      return item.render();
-    })
+    const items = this.items.map(function(item, index) {
+      let node = item.render();
+
+      node.onchange = this.changeCheckStatus.bind(this, index);
+
+      return node;
+    }.bind(this))
     .forEach(function(item) {
       list.appendChild(item);
     });

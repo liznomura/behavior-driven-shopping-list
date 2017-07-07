@@ -27,7 +27,4 @@
     }
   }
 
-  window.changeCheckedStatus = function(idx, checkbox) {
-
-  };
 })();
