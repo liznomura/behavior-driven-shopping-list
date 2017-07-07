@@ -32,7 +32,7 @@ class ShoppingList {
   changeCheckStatus(index) {
     let item = this.items[index];
 
-    if(item.checked) {
+    if(item.is_done) {
       item.uncheck();
     } else {
       item.check();
