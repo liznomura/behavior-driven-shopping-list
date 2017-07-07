@@ -1,7 +1,7 @@
 /*jshint esversion:6*/
 class ShoppingListItem {
   constructor(name, description) {
-    if(!name) throw new Error('must give a name')
+    if(!name) throw new Error('must give a name');
     this.name = name;
     this.description = description;
     this.is_done = false;
@@ -22,6 +22,7 @@ class ShoppingListItem {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.className = 'checkbox';
+    checkbox.onchange = changeCheckedStatus;
 
     singleLi.className = `completed_${this.is_done}`;
     firstSpan.innerText = this.name;
