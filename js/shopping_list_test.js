@@ -179,6 +179,28 @@ describe('ShoppingList', function() {
     });
   });
 
+  describe('changeCheckStatus()', function() {
+    beforeEach(function() {
+      testList = new ShoppingList();
+      testList.addItem(avo);
+      testList.addItem(eggu);
+    });
+
+    it('should be a function', function() {
+      expect(testList.changeCheckStatus).to.be.a('function');
+    });
+
+    it('change the is_done property to true by calling the function check() if the is_done property is false', function() {
+      testList.changeCheckStatus(1);
+      expect(testList.items[1].is_done).to.be.true;
+    });
+
+    it('change the is_done property to false by calling the function uncheck() if the is_done property is true', function() {
+      testList.changeCheckStatus(1);
+      expect(testList.items[1].is_done).to.be.false;
+    });
+  });
+
   /*** render ***/
   describe('render()', function() {
     let renderedList;
