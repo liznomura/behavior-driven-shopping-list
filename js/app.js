@@ -19,6 +19,14 @@
     appendToContent(myList.render());
   });
 
+  const itemBtn = content.querySelectorAll('button');
+    itemBtn.forEach( (btn, i) => {
+      btn.addEventListener('click', function() {
+        myList.removeItem(myList.items[i]);
+      });
+    });
+    console.log(itemBtn);
+
   function appendToContent(node) {
     if(content.children.length > 0) {
       content.replaceChild(node, content.children[0]);
