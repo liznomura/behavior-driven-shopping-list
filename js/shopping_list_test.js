@@ -99,6 +99,11 @@ describe('ShoppingListItem', function() {
       expect(renderedItem.children[2].nodeName).to.equal('INPUT');
       expect(renderedItem.children[2].type).to.equal('checkbox');
     });
+
+    it('should have a button element with innerText of x', function() {
+      expect(renderedItem.children[3].nodeName).to.equal('BUTTON');
+      expect(renderedItem.children[3].type).to.equal('button');
+    });
   });
 });
 
