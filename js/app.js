@@ -21,9 +21,13 @@
 
   function appendToContent(node) {
     if(content.children.length > 0) {
-      content.replaceChild(node, content.children[0])
+      content.replaceChild(node, content.children[0]);
     } else {
       content.appendChild(node);
     }
   }
+
+  window.changeCheckedStatus = function(idx, checkbox) {
+
+  };
 })();
