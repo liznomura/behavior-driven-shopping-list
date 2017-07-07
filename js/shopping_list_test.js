@@ -86,12 +86,18 @@ describe('ShoppingListItem', function() {
     });
 
     it('<li> should have two <span>', function() {
-      expect(renderedItem.children).to.have.lengthOf(2);
+      expect(renderedItem.children[0].nodeName).to.equal('SPAN');
+      expect(renderedItem.children[1].nodeName).to.equal('SPAN');
     });
 
     it('innerText of <span>s should correspond to name and description', function() {
       expect(renderedItem.children[0].innerText).to.equal('Avocado');
       expect(renderedItem.children[1].innerText).to.equal('vegetable mayonnaise');
+    });
+
+    it('should have a checkbox', function() {
+      expect(renderedItem.children[2].nodeName).to.equal('INPUT');
+      expect(renderedItem.children[2].type).to.equal('checkbox');
     });
   });
 });
