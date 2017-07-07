@@ -29,12 +29,16 @@ class ShoppingList {
   }
 
   render() {
-    let html = `<ul>`;
-    for(let i = 0; i < this.items.length; i++) {
-      html += this.items[i].render();
-    }
-    html += `</ul>`;
-    return html;
+    const list = document.createElement('ul');
+
+    const items = this.items.map(function(item) {
+      return item.render();
+    })
+    .forEach(function(item) {
+      list.appendChild(item);
+    });
+
+    return list;
   }
 
 }
