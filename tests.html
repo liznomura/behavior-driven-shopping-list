@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./node_modules/mocha/mocha.css" />
+</head>
+
+<body>
+ <form id="addForm">
+    <input name="title" id="title" type="text">
+    <input name="description" id="description" type="text">
+    <button type="submit" id="add_shopping_list_item_button">Add To Shopping List</button>
+  </form>
+<div id="content"></div>
+  <div id='mocha'></div>
+  <script src='./js/shopping_list_item.js'></script>
+  <script src='./js/shopping_list.js'></script>
+  <script src='./node_modules/mocha/mocha.js'></script>
+  <script src='./node_modules/chai/chai.js'></script>
+  <script>mocha.setup('bdd')</script>
+  <script src='./js/app.js'></script>
+  <script src='./js/shopping_list_test.js'></script>
+  <script>
+    mocha.run()
+  </script>
+</body>
+</html>
