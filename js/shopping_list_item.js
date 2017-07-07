@@ -22,6 +22,11 @@ class ShoppingListItem {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.className = 'checkbox';
+
+    const removeBtn = document.createElement('button');
+    removeBtn.innerText = 'x';
+    removeBtn.type = 'button';
+
     if(this.is_done) {
       checkbox.checked = true;
     }
@@ -33,6 +38,7 @@ class ShoppingListItem {
     singleLi.appendChild(firstSpan);
     singleLi.appendChild(secondSpan);
     singleLi.appendChild(checkbox);
+    singleLi.appendChild(removeBtn);
 
     return singleLi;
   }
