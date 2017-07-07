@@ -99,10 +99,6 @@ describe('ShoppingListItem', function() {
       expect(renderedItem.children[2].nodeName).to.equal('INPUT');
       expect(renderedItem.children[2].type).to.equal('checkbox');
     });
-
-    it('checkbox should have an onchange handler', function() {
-      expect(renderedItem.children[2].onchange).to.be.a('function');
-    });
   });
 });
 
